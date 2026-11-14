@@ -132,6 +132,24 @@ nav.sticky .nav-days a{flex:0 0 auto}
  header small{padding-right:130px}
 }
 @media print{.mobile-theme-slot{display:none!important}}
+</style><style>
+/* Display the icon of the currently active theme, not the destination theme. */
+.theme-toggle .sun-icon{opacity:1!important;visibility:visible!important;transform:none!important}
+.theme-toggle .moon-icon{opacity:0!important;visibility:hidden!important;transform:none!important}
+html[data-theme="dark"] .theme-toggle .sun-icon{opacity:0!important;visibility:hidden!important}
+html[data-theme="dark"] .theme-toggle .moon-icon{opacity:1!important;visibility:visible!important}
+.theme-toggle .moon-icon svg{transform:none!important;fill:currentColor!important}
+@media(max-width:700px){
+ .mobile-theme-slot{right:14px;top:calc(12px + env(safe-area-inset-top,0px))}
+ .mobile-theme-slot .nav-theme{gap:9px!important}
+ .mobile-theme-slot .theme-mode{box-sizing:border-box!important;width:112px!important;min-width:112px!important;max-width:none!important;height:36px!important;min-height:36px!important;padding:0 8px!important;border:0!important;border-radius:6px!important;background:transparent!important;color:#fff!important;font-size:13px!important;font-weight:700!important;line-height:36px!important;appearance:none!important;-webkit-appearance:none!important;text-overflow:clip!important;color-scheme:dark}
+ .mobile-theme-slot .theme-mode option{background:#26313a;color:#fff}
+ .mobile-theme-slot .theme-toggle{display:flex!important;align-items:center!important;justify-content:center!important;width:36px!important;height:36px!important;min-width:36px!important;min-height:36px!important;padding:0!important;border:0!important;box-shadow:none!important;border-radius:50%!important;background:transparent!important;color:#fff!important;transform:none!important}
+ .mobile-theme-slot .theme-toggle .sun-icon,.mobile-theme-slot .theme-toggle .moon-icon{align-items:center;justify-content:center;line-height:1;width:26px;height:26px;transform:none!important}
+ .mobile-theme-slot .theme-toggle .sun-icon{font-size:24px!important}
+ .mobile-theme-slot .theme-toggle .moon-icon svg{display:block!important;width:23px!important;height:23px!important;min-width:23px!important;min-height:23px!important}
+ .mobile-theme-slot .theme-toggle:focus-visible,.mobile-theme-slot .theme-mode:focus-visible{outline:2px solid #fff!important;outline-offset:2px}
+}
 </style></head><body>
 <header><div id="mobile-theme-slot" class="mobile-theme-slot"></div><small>ARIES · LIZ · YUMI</small><h1>San Francisco,<br>together.</h1><p>Dec 27, 2026 – Jan 2, 2027 · 6 nights · Hotel Zephyr<br>Good food, little adventures, unexpected discoveries, and room to do absolutely nothing.</p><div class="pills"><a class="pill" href="#days">Explore itinerary</a><a class="pill" href="#wishlist">More experiences</a><a class="pill" href="https://www.google.com/maps/search/?api=1&query=Hotel+Zephyr+San+Francisco" target="_blank" rel="noopener">Hotel directions ↗</a></div></header>
 <nav class="sticky"><div class="nav-toolbar"><div class="nav-theme"><label class="theme-mode-label" for="theme-mode">Theme</label><select id="theme-mode" class="theme-mode" aria-label="Theme preference"><option value="system">Auto</option><option value="clock">Clock</option><option value="light">Light</option><option value="dark">Dark</option></select><button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme"><span aria-hidden="true" class="sun-icon">☀</span><span aria-hidden="true" class="moon-icon"><svg viewBox="0 0 24 24" width="25" height="25" aria-hidden="true"><path fill="currentColor" d="M20.5 14.4A8.7 8.7 0 0 1 9.6 3.5 8.8 8.8 0 1 0 20.5 14.4Z"/></svg></span></button></div></div><div class="nav-days"><a href="#sun">Sun 27</a><a href="#mon">Mon 28</a><a href="#tue">Tue 29</a><a href="#wed">Wed 30</a><a href="#thu">Thu 31</a><a href="#fri">Fri 1</a><a href="#sat">Sat 2</a><a href="#foodie">Foodie spots</a><a href="#wishlist">Experiences</a></div></nav>
@@ -244,7 +262,7 @@ const systemTheme=window.matchMedia('(prefers-color-scheme: dark)');
 let mode='system';
 try{const savedMode=localStorage.getItem('sf-theme-mode');const legacy=localStorage.getItem('sf-theme');mode=['system','clock','light','dark'].includes(savedMode)?savedMode:['light','dark'].includes(legacy)?legacy:'system'}catch(e){}
 function resolvedTheme(){if(mode==='system')return systemTheme.matches?'dark':'light';if(mode==='clock'){const hour=new Date().getHours();return hour>=18||hour<6?'dark':'light'}return mode}
-function applyTheme(){const t=resolvedTheme();document.documentElement.dataset.theme=t;themeMode.value=mode;themeBtn.setAttribute('aria-label','Switch to '+(t==='dark'?'light':'dark')+' mode');themeBtn.title='Current: '+t+' · Preference: '+mode;const meta=document.querySelector('meta[name="theme-color"]');if(meta)meta.content=t==='dark'?'#171b25':'#fff8f3'}
+function applyTheme(){const t=resolvedTheme();document.documentElement.dataset.theme=t;themeMode.value=mode;themeBtn.setAttribute('aria-label','Current theme: '+t+'. Switch to '+(t==='dark'?'light':'dark')+' mode');themeBtn.title='Current: '+t+' · Preference: '+mode;const meta=document.querySelector('meta[name="theme-color"]');if(meta)meta.content=t==='dark'?'#171b25':'#fff8f3'}
 function chooseTheme(next){mode=next;try{localStorage.setItem('sf-theme-mode',mode)}catch(e){}applyTheme()}
 themeMode.addEventListener('change',()=>chooseTheme(themeMode.value));
 themeBtn.addEventListener('click',()=>chooseTheme(resolvedTheme()==='dark'?'light':'dark'));
