@@ -246,7 +246,7 @@ lb.querySelector('.close').onclick=close;lb.querySelector('.prev').onclick=()=>{
 document.addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')close();if(e.key==='ArrowRight')lb.querySelector('.next').click();if(e.key==='ArrowLeft')lb.querySelector('.prev').click()});
 document.getElementById('print').onclick=()=>window.print();
 document.getElementById('copy').onclick=()=>{const txt=days.map(d=>d.date+' — '+d.title+'\n'+d.items.map(i=>i[0]+' '+i[1]).join('\n')).join('\n\n');navigator.clipboard.writeText(txt).then(()=>alert('Itinerary copied')).catch(()=>prompt('Copy itinerary',txt))};
-for(const kind of ['all','activity'])document.getElementById(kind).onclick=()=>{document.querySelectorAll('#wishlist .card').forEach(c=>c.hidden=kind!=='all'&&c.dataset.kind!==kind);for(const k of ['all','activity'])document.getElementById(k).classList.toggle('active',k===kind)};
+// Removed obsolete wishlist filter bindings; the corresponding controls no longer exist.
 
 const foodieData=[
 ["Mensho Tokyo","Noodles","Rich Japanese ramen","672 Geary St"],
