@@ -100,6 +100,24 @@ nav.sticky .nav-actions{display:flex;flex:0 0 auto;margin-left:0!important;gap:6
 nav.sticky{flex-direction:column!important;align-items:stretch!important;gap:5px!important}
 nav.sticky .nav-toolbar{display:flex!important;width:100%;align-items:center;justify-content:flex-start}
 nav.sticky .nav-days{width:100%!important;flex:none!important;min-width:0!important}
+</style><style>
+/* Final navigation geometry: theme and day pills always share one horizontal line. */
+nav.sticky{display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:space-between!important;flex-wrap:nowrap!important;gap:14px!important}
+nav.sticky .nav-toolbar{display:flex!important;flex:0 0 auto!important;width:auto!important;min-width:0!important;align-items:center!important}
+nav.sticky .nav-theme{display:flex!important;flex:0 0 auto!important;align-items:center!important;gap:8px!important;white-space:nowrap}
+nav.sticky .nav-days{display:flex!important;flex:1 1 auto!important;width:auto!important;min-width:0!important;align-items:center!important;justify-content:flex-start!important;overflow-x:auto!important;white-space:nowrap}
+nav.sticky .nav-days a{flex:0 0 auto}
+.extras{display:flex!important;align-items:center!important;flex-wrap:nowrap!important;gap:8px!important}
+.extras .nav-actions{display:flex!important;align-items:center!important;justify-content:center!important;align-self:center!important;margin-left:auto!important;gap:8px!important}
+.extras .nav-icon-button{display:flex!important;align-items:center!important;justify-content:center!important;flex:0 0 38px!important;width:38px!important;height:38px!important;min-width:38px!important;min-height:38px!important;padding:0!important;line-height:1!important;border-radius:12px!important}
+.extras .nav-icon-button svg{display:block!important;width:19px!important;height:19px!important;flex:none!important;margin:0!important}
+@media(max-width:700px){
+ nav.sticky{gap:7px!important;padding:6px 10px!important}
+ nav.sticky .nav-theme{gap:5px!important}
+ nav.sticky .nav-days{gap:7px!important}
+ .extras .nav-icon-button{flex-basis:34px!important;width:34px!important;height:34px!important;min-width:34px!important;min-height:34px!important}
+ .extras .nav-icon-button svg{width:17px!important;height:17px!important}
+}
 </style></head><body>
 <header><small>ARIES · LIZ · YUMI</small><h1>San Francisco,<br>together.</h1><p>Dec 27, 2026 – Jan 2, 2027 · 6 nights · Hotel Zephyr<br>Good food, little adventures, unexpected discoveries, and room to do absolutely nothing.</p><div class="pills"><a class="pill" href="#days">Explore itinerary</a><a class="pill" href="#wishlist">More experiences</a><a class="pill" href="https://www.google.com/maps/search/?api=1&query=Hotel+Zephyr+San+Francisco" target="_blank" rel="noopener">Hotel directions ↗</a></div></header>
 <nav class="sticky"><div class="nav-toolbar"><div class="nav-theme"><label class="theme-mode-label" for="theme-mode">Theme</label><select id="theme-mode" class="theme-mode" aria-label="Theme preference"><option value="system">Auto</option><option value="clock">Clock</option><option value="light">Light</option><option value="dark">Dark</option></select><button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme"><span aria-hidden="true" class="sun-icon">☀</span><span aria-hidden="true" class="moon-icon"><svg viewBox="0 0 24 24" width="25" height="25" aria-hidden="true"><path fill="currentColor" d="M20.5 14.4A8.7 8.7 0 0 1 9.6 3.5 8.8 8.8 0 1 0 20.5 14.4Z"/></svg></span></button></div></div><div class="nav-days"><a href="#sun">Sun 27</a><a href="#mon">Mon 28</a><a href="#tue">Tue 29</a><a href="#wed">Wed 30</a><a href="#thu">Thu 31</a><a href="#fri">Fri 1</a><a href="#sat">Sat 2</a><a href="#foodie">Foodie spots</a><a href="#wishlist">Experiences</a></div></nav>
