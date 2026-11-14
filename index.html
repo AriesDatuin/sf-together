@@ -76,8 +76,21 @@ nav.sticky .nav-days::-webkit-scrollbar{display:none}
  nav.sticky .nav-days{width:100%}
 }
 @media print{.hero-actions-slot,.nav-actions{display:none!important}}
+</style><style>
+/* Keep theme in its existing location; pin print/copy after the date pills at every width. */
+nav.sticky{flex-direction:row!important;align-items:center!important;gap:10px!important}
+nav.sticky .nav-toolbar{display:contents!important}
+nav.sticky .nav-theme{display:flex;flex:0 0 auto;align-items:center}
+nav.sticky .nav-days{flex:1 1 auto!important;width:auto!important;min-width:0!important}
+nav.sticky .nav-actions{display:flex;flex:0 0 auto;margin-left:0!important;gap:6px}
+@media(max-width:700px){
+ nav.sticky{gap:6px!important;padding:6px 9px!important}
+ nav.sticky .nav-icon-button{width:30px;height:30px}
+ nav.sticky .nav-icon-button svg{width:16px;height:16px}
+ nav.sticky .nav-days{gap:7px}
+}
 </style></head><body>
-<header><div id="hero-actions-slot" class="hero-actions-slot"></div><small>ARIES · LIZ · YUMI</small><h1>San Francisco,<br>together.</h1><p>Dec 27, 2026 – Jan 2, 2027 · 6 nights · Hotel Zephyr<br>Good food, little adventures, unexpected discoveries, and room to do absolutely nothing.</p><div class="pills"><a class="pill" href="#days">Explore itinerary</a><a class="pill" href="#wishlist">More experiences</a><a class="pill" href="https://www.google.com/maps/search/?api=1&query=Hotel+Zephyr+San+Francisco" target="_blank" rel="noopener">Hotel directions ↗</a></div></header>
+<header><small>ARIES · LIZ · YUMI</small><h1>San Francisco,<br>together.</h1><p>Dec 27, 2026 – Jan 2, 2027 · 6 nights · Hotel Zephyr<br>Good food, little adventures, unexpected discoveries, and room to do absolutely nothing.</p><div class="pills"><a class="pill" href="#days">Explore itinerary</a><a class="pill" href="#wishlist">More experiences</a><a class="pill" href="https://www.google.com/maps/search/?api=1&query=Hotel+Zephyr+San+Francisco" target="_blank" rel="noopener">Hotel directions ↗</a></div></header>
 <nav class="sticky"><div class="nav-toolbar"><div class="nav-theme"><label class="theme-mode-label" for="theme-mode">Theme</label><select id="theme-mode" class="theme-mode" aria-label="Theme preference"><option value="system">Auto</option><option value="clock">Clock</option><option value="light">Light</option><option value="dark">Dark</option></select><button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme"><span aria-hidden="true" class="sun-icon">☀</span><span aria-hidden="true" class="moon-icon"><svg viewBox="0 0 24 24" width="25" height="25" aria-hidden="true"><path fill="currentColor" d="M20.5 14.4A8.7 8.7 0 0 1 9.6 3.5 8.8 8.8 0 1 0 20.5 14.4Z"/></svg></span></button></div><div class="nav-actions" id="nav-actions"><button id="print" class="nav-icon-button" type="button" title="Print / Save PDF" aria-label="Print or save itinerary as PDF"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9V3h12v6M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v7H6zM18 12h.01"/></svg></button><button id="copy" class="nav-icon-button" type="button" title="Copy trip summary" aria-label="Copy trip summary"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg></button></div></div><div class="nav-days"><a href="#sun">Sun 27</a><a href="#mon">Mon 28</a><a href="#tue">Tue 29</a><a href="#wed">Wed 30</a><a href="#thu">Thu 31</a><a href="#fri">Fri 1</a><a href="#sat">Sat 2</a><a href="#foodie">Foodie spots</a><a href="#wishlist">Experiences</a></div></nav>
 <main><div class="intro"><section class="panel"><span class="eyebrow">Home base</span><h2>Hotel Zephyr</h2><p>250 Beach St, San Francisco, CA 94133<br>Arrival Sunday ~11 AM · Check-in 4 PM. Ask the hotel to hold luggage.</p><a href="https://www.google.com/maps/search/?api=1&query=Hotel+Zephyr+250+Beach+St+San+Francisco" target="_blank">Directions ↗</a></section><section class="panel"><span class="eyebrow">Our planning rules</span><h2>Leave room for magic</h2><p>1–2 main activities each day. Hotel breaks encouraged. One special family dinner. Mostly walking + Waymo. Everything here is tentative except booked travel and hotel.</p></section></div>
 <div class="notice"><strong>Before you go:</strong> Prices and holiday opening hours need verification. Liz avoids tomatoes and heavy cream (other dairy is fine). Confirm food preparation and age policies for Yumi, 9. Images will be added only after photo rights and sources are verified.</div>
@@ -210,12 +223,4 @@ const initialDay=location.hash.slice(1);
 selectItineraryDay(dayIds.has(initialDay)?initialDay:'sun');
 window.addEventListener('hashchange',()=>{const id=location.hash.slice(1);if(dayIds.has(id))selectItineraryDay(id)});
 
-// Move the same functional print/copy controls between desktop navigation and mobile hero.
-const actionGroup=document.getElementById('nav-actions');
-const desktopActionSlot=actionGroup.parentElement;
-const mobileActionSlot=document.getElementById('hero-actions-slot');
-const actionMedia=window.matchMedia('(max-width:700px)');
-function positionTripActions(){const destination=actionMedia.matches?mobileActionSlot:desktopActionSlot;if(actionGroup.parentElement!==destination)destination.appendChild(actionGroup)}
-positionTripActions();
-if(actionMedia.addEventListener)actionMedia.addEventListener('change',positionTripActions);else actionMedia.addListener(positionTripActions);
 </script></body></html>
