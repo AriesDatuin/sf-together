@@ -6,12 +6,18 @@
 header{position:relative;isolation:isolate;min-height:440px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;background:linear-gradient(90deg,rgba(24,32,44,.88) 0%,rgba(31,39,50,.64) 52%,rgba(31,39,50,.18) 100%),url('https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=1800&q=85') center 49%/cover no-repeat,#283440;color:#fff}
 header small{color:#ffe3d7}header h1{color:#fff;text-shadow:0 2px 24px #0005}header p{color:#fff7f0;text-shadow:0 1px 12px #0008}header .pill{background:#fff;color:#78334e;border-color:#fff}header .pill:hover,header .pill:focus-visible{background:#f9d7e0;color:#5e2340}
 @media(max-width:650px){header{min-height:500px;background-position:center center;background-image:linear-gradient(180deg,rgba(23,32,42,.64),rgba(23,32,42,.83)),url('https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=1100&q=82')}}
+</style><style>
+html{scroll-behavior:smooth;scroll-padding-top:90px}section[id]{scroll-margin-top:90px}
+.foodie-tabs{display:flex;flex-wrap:wrap;gap:9px;margin:22px 0 12px}.foodie-filter{border:1px solid #e4c1ca;background:#fff;color:#863b58;border-radius:99px;padding:10px 16px;font:700 13px inherit;cursor:pointer;transition:background .2s,color .2s,transform .2s}.foodie-filter:hover{transform:translateY(-2px);background:#fff0f4}.foodie-filter.selected{background:#8c3155;color:#fff;border-color:#8c3155}.foodie-count{font-size:13px;color:#756b71;margin:0 0 17px}.foodie-card{min-height:180px}.foodie-card .card-content{padding:26px}.foodie-card .foodie-category{display:inline-block;color:#a04567;background:#fce9ee;padding:6px 11px;border-radius:30px;font-size:12px;font-weight:800}.foodie-card .foodie-links{display:flex;gap:15px;flex-wrap:wrap;margin-top:15px}.foodie-card[hidden]{display:none!important}
+.js-motion .reveal{opacity:0;transform:translateY(25px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}.js-motion .reveal.is-visible{opacity:1;transform:none}
+#lightbox{display:flex!important;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .28s ease,visibility .28s}#lightbox.open{opacity:1;visibility:visible;pointer-events:auto}#lightbox img{transform:scale(.94) translateY(10px);opacity:0;transition:transform .35s cubic-bezier(.2,.8,.2,1),opacity .3s ease}#lightbox.open img{transform:scale(1) translateY(0);opacity:1}#lightbox img.gallery-changing{opacity:.18;transform:scale(.975)}#lightbox button{transition:transform .2s,background .2s}#lightbox button:hover{transform:scale(1.09);background:#ffe3eb}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.js-motion .reveal{opacity:1;transform:none;transition:none}#lightbox,#lightbox img,#lightbox button,.foodie-filter{transition:none!important}}
 </style></head><body>
 <header><small>ARIES · LIZ · YUMI</small><h1>San Francisco,<br>together.</h1><p>Dec 27, 2026 – Jan 2, 2027 · 6 nights · Hotel Zephyr<br>Good food, little adventures, unexpected discoveries, and room to do absolutely nothing.</p><div class="pills"><a class="pill" href="#days">Explore itinerary</a><a class="pill" href="#wishlist">Wishlist & alternatives</a><a class="pill" href="https://www.google.com/maps/search/?api=1&query=Hotel+Zephyr+San+Francisco" target="_blank" rel="noopener">Hotel directions ↗</a></div></header>
-<nav class="sticky"><div><a href="#sun">Sun 27</a><a href="#mon">Mon 28</a><a href="#tue">Tue 29</a><a href="#wed">Wed 30</a><a href="#thu">Thu 31</a><a href="#fri">Fri 1</a><a href="#sat">Sat 2</a><a href="#wishlist">Wishlist</a></div></nav>
+<nav class="sticky"><div><a href="#sun">Sun 27</a><a href="#mon">Mon 28</a><a href="#tue">Tue 29</a><a href="#wed">Wed 30</a><a href="#thu">Thu 31</a><a href="#fri">Fri 1</a><a href="#sat">Sat 2</a><a href="#foodie">Foodie spots</a><a href="#wishlist">Wishlist</a></div></nav>
 <main><div class="intro"><section class="panel"><span class="eyebrow">Home base</span><h2>Hotel Zephyr</h2><p>250 Beach St, San Francisco, CA 94133<br>Arrival Sunday ~11 AM · Check-in 4 PM. Ask the hotel to hold luggage.</p><a href="https://www.google.com/maps/search/?api=1&query=Hotel+Zephyr+250+Beach+St+San+Francisco" target="_blank">Directions ↗</a></section><section class="panel"><span class="eyebrow">Our planning rules</span><h2>Leave room for magic</h2><p>1–2 main activities each day. Hotel breaks encouraged. One special family dinner. Mostly walking + Waymo. Everything here is tentative except booked travel and hotel.</p></section></div>
 <div class="notice"><strong>Before you go:</strong> Prices and holiday opening hours need verification. Liz avoids tomatoes and heavy cream (other dairy is fine). Confirm food preparation and age policies for Yumi, 9. Images will be added only after photo rights and sources are verified.</div>
-<div class="extras"><button id="print">Print / Save PDF</button><button id="copy">Copy trip summary</button></div><div id="days"></div><section id="wishlist" class="day"><h2>Wishlist & alternatives</h2><p class="subtitle">Favorite ideas we can swap in depending on energy, weather, and reservations.</p><div class="extras"><button id="all" class="active">All ideas</button><button id="food">Food & treats</button><button id="activity">Activities</button></div><div class="cards" id="wishes"></div></section>
+<div class="extras"><button id="print">Print / Save PDF</button><button id="copy">Copy trip summary</button></div><div id="days"></div><section id="foodie" class="day foodie-section"><span class="eyebrow">Taste your way around the city</span><h2>Foodie spots</h2><p class="subtitle">All the delicious possibilities, organized by craving. Tap a category to browse.</p><div class="foodie-tabs" role="group" aria-label="Filter food spots"><button class="foodie-filter selected" data-category="All" aria-pressed="true">All spots</button><button class="foodie-filter" data-category="Noodles" aria-pressed="false">Noodles</button><button class="foodie-filter" data-category="Sushi" aria-pressed="false">Sushi</button><button class="foodie-filter" data-category="Korean" aria-pressed="false">Korean</button><button class="foodie-filter" data-category="Coffee" aria-pressed="false">Coffee</button><button class="foodie-filter" data-category="Pastries" aria-pressed="false">Pastries</button><button class="foodie-filter" data-category="Yakitori" aria-pressed="false">Yakitori</button><button class="foodie-filter" data-category="Japanese" aria-pressed="false">Japanese</button><button class="foodie-filter" data-category="Other" aria-pressed="false">Other</button></div><p id="foodie-count" class="foodie-count" aria-live="polite"></p><div id="foodie-grid" class="cards"></div></section><section id="wishlist" class="day"><h2>Wishlist & alternatives</h2><p class="subtitle">Favorite ideas we can swap in depending on energy, weather, and reservations.</p><div class="extras"><button id="all" class="active">All ideas</button><button id="food">Food & treats</button><button id="activity">Activities</button></div><div class="cards" id="wishes"></div></section>
 <footer>SF Together · A flexible family travel plan · Updated November 2026 · This is a planning guide, not booking confirmation.</footer></main>
 <div id="lightbox" role="dialog" aria-modal="true" aria-label="Image gallery"><button class="close" aria-label="Close">×</button><button class="prev" aria-label="Previous">‹</button><img alt=""><button class="next" aria-label="Next">›</button><p></p></div><script>
 
@@ -46,4 +52,48 @@ document.addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return
 document.getElementById('print').onclick=()=>window.print();
 document.getElementById('copy').onclick=()=>{const txt=days.map(d=>d.date+' — '+d.title+'\n'+d.items.map(i=>i[0]+' '+i[1]).join('\n')).join('\n\n');navigator.clipboard.writeText(txt).then(()=>alert('Itinerary copied')).catch(()=>prompt('Copy itinerary',txt))};
 for(const kind of ['all','food','activity'])document.getElementById(kind).onclick=()=>{document.querySelectorAll('#wishlist .card').forEach(c=>c.hidden=kind!=='all'&&c.dataset.kind!==kind);for(const k of ['all','food','activity'])document.getElementById(k).classList.toggle('active',k===kind)};
+
+const foodieData=[
+["Mensho Tokyo","Noodles","Rich Japanese ramen","672 Geary St"],
+["Marufuku Ramen","Noodles","Hakata-style tonkotsu ramen","Japantown, San Francisco"],
+["Hinodeya Ramen","Noodles","Dashi-based ramen","San Francisco"],
+["Taishoken","Noodles","Tsukemen dipping noodles","San Francisco"],
+["Hinata Sushi","Sushi","Omakase experience","810 Van Ness Ave"],
+["Saru Sushi Bar","Sushi","Sushi and seasonal nigiri","San Francisco"],
+["Kuma Sushi","Sushi","Casual sushi option","San Francisco"],
+["San Ho Won","Korean","Special-occasion Korean barbecue","2170 Bryant St"],
+["Jina Bakes","Korean","Korean-French pastries","1581 Webster St"],
+["Arsicault Bakery","Pastries","Famous croissants","397 Arguello Blvd"],
+["Jina Bakes","Pastries","Korean-inspired baked treats","1581 Webster St"],
+["Breadbelly","Pastries","Asian-American bakery","1408 Clement St"],
+["Holy Nata","Pastries","Portuguese custard tarts","San Francisco"],
+["Jina Bakes","Coffee","Coffee and pastry stop","1581 Webster St"],
+["Breadbelly","Coffee","Coffee and baked goods","1408 Clement St"],
+["Rintaro","Yakitori","Izakaya and grilled skewers","82 14th St"],
+["Yakitori Edomasa","Yakitori","Charcoal-grilled skewers","San Francisco"],
+["Nippon Curry","Japanese","Japanese curry and croquettes","San Francisco"],
+["Okawari","Japanese","Japanese dining","San Francisco"],
+["Komeya No Bento","Japanese","Bento and sandos for a picnic","San Francisco"],
+["Pink Onion","Other","Pizza and pasta","San Francisco"],
+["Le Petit Chef","Other","Immersive projected dinner","50 3rd St"]
+];
+const foodGrid=document.getElementById('foodie-grid');
+function renderFood(category){
+ const filtered=foodieData.filter(x=>category==='All'||x[1]===category);
+ foodGrid.innerHTML=filtered.map(x=>'<article class="card foodie-card"><div class="card-content"><span class="foodie-category">'+esc(x[1])+'</span><h3>'+esc(x[0])+'</h3><p>'+esc(x[2])+'</p><div class="meta">'+esc(x[3])+'</div><div class="foodie-links"><a href="'+maps(x[0])+'" target="_blank" rel="noopener">Map ↗</a><a href="https://www.google.com/search?q='+encodeURIComponent(x[0]+' San Francisco menu')+'" target="_blank" rel="noopener">Menu / details ↗</a></div></div></article>').join('');
+ document.getElementById('foodie-count').textContent=filtered.length+' spots · Menus, hours and reservations should be confirmed';
+ document.querySelectorAll('.foodie-filter').forEach(b=>{const chosen=b.dataset.category===category;b.classList.toggle('selected',chosen);b.setAttribute('aria-pressed',String(chosen))});
+ observeReveal();
+}
+document.querySelectorAll('.foodie-filter').forEach(b=>b.addEventListener('click',()=>renderFood(b.dataset.category)));
+const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+let observer;
+if(!reduceMotion&&'IntersectionObserver' in window){document.documentElement.classList.add('js-motion');observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible');observer.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px -30px 0px'})}
+function observeReveal(){if(!observer)return;document.querySelectorAll('.day,.panel,.card').forEach(el=>{if(!el.classList.contains('reveal'))el.classList.add('reveal');observer.observe(el)})}
+renderFood('All');observeReveal();
+const lbImage=lb.querySelector('img');
+let galleryTransition;
+function switchGallery(direction){if(!photos.length)return;lbImage.classList.add('gallery-changing');clearTimeout(galleryTransition);galleryTransition=setTimeout(()=>{active=(active+direction+photos.length)%photos.length;show();requestAnimationFrame(()=>lbImage.classList.remove('gallery-changing'))},150)}
+lb.querySelector('.prev').onclick=()=>switchGallery(-1);
+lb.querySelector('.next').onclick=()=>switchGallery(1);
 </script></body></html>
